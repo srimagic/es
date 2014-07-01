@@ -1,4 +1,5 @@
 function search($scope, $http) {
+
 	$scope.query = function() {
 		var request = $http({method:'get',                                                                                                        
                     url:'/search',                                                                                                               
@@ -17,5 +18,20 @@ function search($scope, $http) {
 	    	$scope.result = err;                                         
 	    });
 	};
+
+	$scope.clear = function() {
+		init();
+		$scope.query();
+	};
+
+	var init = function() {
+		var d = new Date();
+		$scope.dow = d.getDay();
+		$scope.tod = d.getHours();
+		$scope.query_string = "";
+	}
+
 	$scope.$watch('dow + tod', $scope.query, true);
+
+	init();
 }
