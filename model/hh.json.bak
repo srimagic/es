@@ -1,0 +1,15 @@
+
+{ "index" : { "_index" : "vegas", "_type" : "providers", "_id" : "1" } }
+{"category":"bar", "title":"Kona Grill", "website":"kona.com"}
+
+{ "index" : { "_index" : "vegas", "_type" : "providers", "_id" : "2" } }
+{"category":"restaurant", "title":"BJ's", "website":"BJ's.com"}
+
+{ "index" : { "_index" : "vegas", "_type" : "offers"} }
+{"sale":{"category":"USD","old":"6", "new":"3", "title":"off"}, "provider":{"title":"BJ's", "id":"2"}, "item":{"category":"drinks", "title":"Budlight"},"active":{"start_dow":1, "end_dow":4, "start_tod":15, "end_tod":18}}
+
+{ "index" : { "_index" : "vegas", "_type" : "offers"} }
+{"sale":{"category":"USD","old":"1", "new":"0.5", "title":"2 for 1"}, "provider":{"title":"Kona Grill", "id":"1"}, "item":{"category":"appetizer", "title":"wings"},"active":{"start_dow":3, "end_dow":3, "start_tod":9, "end_tod":13}}
+
+{ "index" : { "_index" : "vegas", "_type" : "offers"} }
+{"sale":{"category":"USD","old":"1", "new":"0.5", "title":"2 for 1"}, "provider":{"title":"ZABA's", "id":"3"}, "item":{"category":"appetizer", "title":"fries"},"active":{"start_dow":3, "end_dow":3, "start_tod":10, "end_tod":12}}

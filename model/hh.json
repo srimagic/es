@@ -1,0 +1,15 @@
+
+{ "index" : { "_index" : "deals", "_type" : "providers", "_id" : "1" } }
+{"category":"bar", "title":"Kona Grill", "website":"kona.com"}
+
+{ "index" : { "_index" : "deals", "_type" : "providers", "_id" : "2" } }
+{"category":"restaurant", "title":"BJ's", "website":"BJ's.com"}
+
+{ "index" : { "_index" : "deals", "_type" : "vegas"} }
+{"deal_type":"hh","offer":[{"offer_type":"percent","offer_val":"half", "offer_desc":"half off", "item_type":"entree", "item_name":"pizza"}], "provider":{"category":"restaurant", "title":"BJ's", "id":"2"}, "duration":{"start_dow":1, "end_dow":4, "start_tod":16, "end_tod":18}}
+
+{ "index" : { "_index" : "deals", "_type" : "vegas"} }
+{"deal_type":"hh", "offer":[{"offer_type":"exact","offer_val":"3", "offer_desc":"", "item_type":"drinks", "item_name":"budlight"}], "provider":{"category":"bar", "title":"Kona Grill", "id":"1"}, "duration":{"start_dow":1, "end_dow":4, "start_tod":16, "end_tod":19}}
+
+{ "index" : { "_index" : "deals", "_type" : "vegas"} }
+{"deal_type":"hh", "offer":[{"offer_type":"off","offer_val":"1", "offer_desc":"$1 off", "item_type":"appetizers", "item_name":"wings"}], "provider":{"category":"bar", "title":"Kona Grill", "id":"1"}, "duration":{"start_dow":5, "end_dow":5, "start_tod":14, "end_tod":16}}

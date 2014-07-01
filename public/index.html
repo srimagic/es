@@ -1,0 +1,45 @@
+<html>
+	<head>
+	</head>
+	<body ng-app="">
+		<h1>HH - restaurants</h1>
+		<div ng-controller="search">
+			<form>
+				<div>
+					 <h4>Day Of week:</h4>
+					 <input name="dayofweek" type="radio" value="1" ng-model="dow"> monday
+					 <input name="dayofweek" type="radio" value="2" ng-model="dow"> tuesday
+					 <input name="dayofweek" type="radio" value="3" ng-model="dow"> thursday
+					 <input name="dayofweek" type="radio" value="5" ng-model="dow"> friday
+					 <input name="dayofweek" type="radio" value="6" ng-model="dow"> saturday
+					 <input name="dayofweek" type="radio" value="7" ng-model="dow"> sunday
+				</div>
+				<hr/>
+				<div>
+					<h4>Time of day:</h4>
+					<input name="timeofday" type="radio" value="16" ng-model="tod"> 4:00 pm
+					<input name="timeofday" type="radio" value="18" ng-model="tod"> 6:00 pm
+					<input name="timeofday" type="radio" value="22" ng-model="tod"> 10:00 pm
+				</div>
+				<hr/>
+				<div>
+					<h4>Search term (optional):</h4>
+					<input name="query_string" type="text" maxlength="20" ng-model="query_string" placeholder="what are you looking for?">
+					<button type="button" ng-click="query()">search</button>
+				</div>
+				<hr/>
+				<div>
+					{{ result }}
+				</div>
+			</form>
+		</div>
+		<div ng-init="restaurants=['kona grill','BJs','yard stick']">
+			<li ng-repeat="restaurant in restaurants">
+				{{ restaurant }}
+			</li>
+		</div>
+	</body>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>-->
+	<script src="/js/controllers/search.js"></script>
+	<script src="/js/angular.min.js"></script>
+</html>

@@ -1,0 +1,55 @@
+#!/bin/bash
+
+echo -e '\n****deleting index****'
+curl -XDELETE 'http://localhost:9200/deals/vegas'
+curl -XDELETE 'http://localhost:9200/deals/providers'
+
+echo -e '\n****creating main index ****'
+curl -XPUT 'http://localhost:9200/deals'
+
+echo -e '\n****creating providers mapping****'
+curl -XPOST 'http://localhost:9200/deals/providers/_mapping' -d '{
+  "providers" : {
+    "date_detection": false,
+    "_timestamp" : {"enabled": true, "store": true}
+  }
+}
+'
+
+echo -e '\n****creating hh mapping****'
+curl -XPOST 'http://localhost:9200/deals/vegas/_mapping' -d '{
+  "vegas" : {
+    "date_detection": false,
+    "properties" : {
+      "duration" : {
+        "type": "nested",
+        "properties": {
+          "start_dow" : {"type": "integer"},
+          "end_dow" : {"type": "integer"},
+          "start_tod" : {"type": "integer"},
+          "end_tod" : {"type": "integer"}
+        }
+      },
+      "offer" : {
+        "type": "nested",
+        "properties": {
+          "offer_type" : {"type": "string"},
+          "offer_val" : {"type": "string"},
+          "offer_desc": {"type": "string", "index": "not_analyzed"},
+          "item_type": {"type": "string", "index": "not_analyzed"},
+          "item_name": {"type": "string", "index": "not_analyzed"}
+        }
+      },
+      "provider" : {
+        "type": "nested",
+        "properties": {
+          "id" : {"type": "integer"},
+          "title": {"type": "string", "index": "not_analyzed"},
+          "category": {"type": "string", "index": "not_analyzed"}
+        }
+      }
+    },
+    "_timestamp" : {"enabled": true, "store": true}
+  }
+}
+'

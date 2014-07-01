@@ -1,0 +1,15 @@
+{
+	"name": "HH-app",
+	"version": "0.0.1",
+	"description": "HH app",
+	"name": "srimagic",
+	"email": "sridharv@gmail.com",
+	"dependencies": {
+		"express":"3.x",
+		"coffee-middle": "*",
+		"elasticsearch": "^1.5.14"
+	},
+	"engines":{
+		"node": "0.10.x"
+	}
+}
