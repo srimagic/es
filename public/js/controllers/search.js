@@ -6,7 +6,8 @@ function search($scope, $http) {
                     params: {
                     	'dow': $scope.dow,
                     	'tod': $scope.tod,
-                    	'query_string': $scope.query_string
+                    	'itemtype': $scope.itemtype,
+                    	'placetype': $scope.placetype
                     }                                                                                                              
         });                                                                                                                                
                                                                                                                                                        
@@ -28,10 +29,11 @@ function search($scope, $http) {
 		var d = new Date();
 		$scope.dow = d.getDay();
 		$scope.tod = d.getHours();
-		$scope.query_string = "";
+		$scope.itemtype = "appetizers";
+		$scope.placetype = "bars";
 	}
 
-	$scope.$watch('dow + tod', $scope.query, true);
+	$scope.$watch('dow + tod + itemtype + placetype', $scope.query, true);
 
 	init();
 }
