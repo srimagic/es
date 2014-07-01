@@ -5,6 +5,7 @@ exports.addRoutes = (app) ->
     dayofweek = 0
     timeofday = 0
     must = []
+    filters = []
     query_string = 
       match_all:
         {}
@@ -36,11 +37,32 @@ exports.addRoutes = (app) ->
               gte:
                 timeofday
 
-      if req.query.query_string
-        query_string =  
-          multi_match:
-            query: req.query.query_string
-            fields: ["provider.title", "provider.category", "offer.offer_desc", "offer.item_name", "offer.item_type"]         
+    filters.push(
+      nested:
+        path:
+          "duration"
+        filter:
+          bool:
+            must: 
+              must
+    )
+
+    additional_filter = 0
+    placetype = req.query.placetype || 0
+    if placetype
+      additional_filter = placetype
+
+    itemtype = req.query.itemtype || 0
+    if itemtype
+      additional_filter = additional_filter + ' AND ' + itemtype
+
+    if additional_filter
+      filters.push(
+        query:
+          query_string:
+            query: 
+              additional_filter
+      )      
     
     query =
       filtered:
@@ -49,15 +71,9 @@ exports.addRoutes = (app) ->
         query:
           query_string
         filter:
-          nested:
-            path:
-              "duration"
-            filter:
-              bool:
-                must: 
-                  must
-    
-    
+          and: 
+            filters
+          
     input =
       index:
         "deals"
