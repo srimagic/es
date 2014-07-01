@@ -38,8 +38,8 @@ exports.addRoutes = (app) ->
 
       if req.query.query_string
         query_string =  
-          fuzzy_like_this:
-            like_text: req.query.query_string
+          multi_match:
+            query: req.query.query_string
             fields: ["provider.title", "provider.category", "offer.offer_desc", "offer.item_name", "offer.item_type"]         
     
     query =
@@ -57,7 +57,6 @@ exports.addRoutes = (app) ->
                 must: 
                   must
     
-    query = query_string
     
     input =
       index:
